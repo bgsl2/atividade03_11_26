@@ -11,4 +11,13 @@ export class CategoriasService {
     this.repo = categoriasRepository;
   }
   // TODO: criar(dados), listar().
+ async listar(){
+    return this.repository.listar()
+ }
+
+async criar({nome }){
+      if (!nome) throw new AppError('Já existe', 400);
+      const categoria = await this.repository.criar(nome)
+      return categoria
+  }
 }
